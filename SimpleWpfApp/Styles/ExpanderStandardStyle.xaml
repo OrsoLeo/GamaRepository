@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:SimpleWpfApp.Styles">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="#1FDB84"/>
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="#1FDB84"/>
     <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="White"/>
