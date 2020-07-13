@@ -1,0 +1,67 @@
+﻿<Window x:Class="SimpleWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleWpfApp"
+        mc:Ignorable="d"
+        Title="Сотрудники" Height="700" Width="1000" ResizeMode="NoResize" Background="#313A5A" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!--<ResourceDictionary Source="{StaticResource ButtonStandardStyle}"/>-->
+    </Window.Resources>
+    <Border BorderThickness="0" Padding="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.RowSpan="3" ItemsSource="{Binding People}" SelectedItem="{Binding CurrentPerson}" Margin="0 0 20 0" Background="AliceBlue">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="100">Имя</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Position}" Width="200">Должность</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Age}" Width="100">Возраст</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding IsWorking, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="150">Наличие задания</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Expander Grid.Column="1" Header="Вид" Margin="20" Style="{DynamicResource ExpanderStandardStyle}">
+                <StackPanel HorizontalAlignment="Center" >
+                    <Label Content="Сортировать по:" Style="{StaticResource LabelStandardStyle}"/>
+                    <RadioButton Content="имени" IsChecked="True" Command="{Binding SortCommand}" CommandParameter="name" Style="{DynamicResource RadioButtonStandardStyle}"/>
+                    <RadioButton Content="должности" Command="{Binding SortCommand}" CommandParameter="pos" Style="{DynamicResource RadioButtonStandardStyle}"/>
+                    <RadioButton Content="возрасту" Command="{Binding SortCommand}" CommandParameter="age" Style="{DynamicResource RadioButtonStandardStyle}"/>
+                    <RadioButton Content="занятости" Command="{Binding SortCommand}" CommandParameter="busy" Style="{DynamicResource RadioButtonStandardStyle}"/>
+                </StackPanel>
+            </Expander>
+
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Label Style="{StaticResource LabelStandardStyle}">Всего сотрудников:</Label>
+                <TextBox Text="{Binding EmployeesQuantity}" Width="70" Style="{DynamicResource TextBoxStandardStyle}" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Style="{StaticResource LabelStandardStyle}">Сидят без дела:</Label>
+                <TextBox Text="{Binding FreeEmployeesQuantity}"  Width="70" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Style="{StaticResource TextBoxStandardStyle}"/>
+            </StackPanel>
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Content="Новый сотрудник" Grid.Row="0" Style="{StaticResource ButtonStandardStyle}" Command="{Binding AddCommand}"/>
+                <Button Content="Дать/завершить задание" Grid.Row="1" Style="{StaticResource ButtonStandardStyle}" Command="{Binding GetBusyCommand}"/>
+                <Button Content="Редактировать должность" Grid.Row="2" Style="{StaticResource ButtonStandardStyle}" Command="{Binding EditCommand}"/>
+                <Button Content="Уволить"  Grid.Row="3" Style="{StaticResource ButtonStandardStyle}" Command="{Binding RemCommand}"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

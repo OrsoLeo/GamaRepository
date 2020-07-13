@@ -1,0 +1,48 @@
+﻿<Window x:Class="SimpleWpfApp.View.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleWpfApp.View"
+        mc:Ignorable="d" Height="320" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#313A5A">
+    <Window.Resources>
+        <Style TargetType="Border">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Border Padding="10" Background="#313A5A">
+        <StackPanel>
+            <Label Content="Данные нового сотрудника" HorizontalAlignment="Center" Style="{StaticResource LabelStandardStyle}"/>
+            <Border>
+                <StackPanel>
+                    <Label Content="Имя:" Style="{StaticResource LabelStandardStyle}"/>
+                    <TextBox Text="{Binding CurrentPerson.Name}" Style="{StaticResource TextBoxStandardStyle}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel>
+                    <Label Content="Должность:" Style="{StaticResource LabelStandardStyle}"/>
+                    <TextBox Text="{Binding CurrentPerson.Position}" Style="{StaticResource TextBoxStandardStyle}"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <StackPanel>
+                    <Label Content="Дата рождения:" Style="{StaticResource LabelStandardStyle}"/>
+                    <DatePickerTextBox Text="{Binding CurrentPerson.Birthday}" AutoWordSelection="True" Style="{StaticResource DatePickerTextBoxStandardStyle}"/>
+                </StackPanel>
+            </Border>
+
+
+            <Grid Margin="0 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Сохранить" Command="{Binding SaveCommand}" IsDefault="True" Style="{StaticResource ButtonStandardStyle}" Margin="0 0 10 0"/>
+                <Button Grid.Column="1" Content="Отмена" IsCancel="True" Style="{StaticResource ButtonStandardStyle}" Height="30" Margin="10 0 0 0 "/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
