@@ -17,7 +17,7 @@
             <Border>
                 <StackPanel>
                     <Label Content="Имя:" Style="{StaticResource LabelStandardStyle}"/>
-                    <Label Content="{Binding CurrentPerson.Name}" FontWeight="Bold" Style="{StaticResource LabelStandardStyle}"/>
+                    <TextBox Text="{Binding CurrentPerson.Name}" Style="{StaticResource TextBoxStandardStyle}"/>
                 </StackPanel>
             </Border>
             <Border>
@@ -29,7 +29,7 @@
             <Border>
                 <StackPanel>
                     <Label Content="Дата рождения:" Style="{StaticResource LabelStandardStyle}"/>
-                    <Label Content="{Binding CurrentPerson.Birthday}" FontWeight="Bold" Style="{StaticResource LabelStandardStyle}"/>
+                    <DatePickerTextBox Text="{Binding CurrentPerson.Birthday}" Style="{StaticResource DatePickerTextBoxStandardStyle}"/>
                 </StackPanel>
             </Border>
 
